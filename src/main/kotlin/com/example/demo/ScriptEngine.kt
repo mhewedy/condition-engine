@@ -32,6 +32,7 @@ class ScriptEngine(
         return result as Boolean
     }
 
+    // TODO cache this binding to reuse across invocations
     private fun bind(): Binding {
         val binding = Binding()
         beanFactory
