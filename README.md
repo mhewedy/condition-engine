@@ -1,6 +1,6 @@
 # condition-engine
 
-Engine uses groovy language to exeucte rules conditions.
+Engine uses groovy language to exeucte the conditions.
 
 * The groovy script will have all spring beans already injected.
 * user can pass as many variables as he wants.
