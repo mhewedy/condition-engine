@@ -22,7 +22,7 @@ class ConditionService(
     fun listAll(): List<Condition> {
         val list = conditionRepository.findAll()
         list.forEach { it.conditionVars?.size }
-        return list;
+        return list
     }
 
 }
