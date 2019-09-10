@@ -1,5 +1,11 @@
 # condition-engine
 
+Engine uses groovy language to exeucte rules conditions.
+
+* The groovy script will have all spring beans already injected.
+* user can pass as many variables as he wants.
+* the script need to return true/false at the end.
+
 Add Condition to the engine:
 
 ```java
