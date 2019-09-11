@@ -27,10 +27,12 @@ public class Example {
 
         Map<String, String> vars = new HashMap<>();
         vars.put("year", "2019");
-        conditionService.addNew("First Condition", "" +
-                        "testService.doCallTheService()            // example on calling spring service \n" +
-                        "return (year == \"2019\")                 // example on using defined variables\n"
-                , vars, "my first condition");
+
+        String script = "" +
+                "testService.doCallTheService()            // example on calling spring service \n" +
+                "return (year == \"2019\")                 // example on using defined variables\n";
+
+        conditionService.addNew("First Condition", script, vars, "my first condition");
 
         System.out.println("** Executing conditions **** ");
 
@@ -39,6 +41,5 @@ public class Example {
             boolean result = scriptEngine.execute(condition);
             System.out.println("result: " + result);
         }
-
     }
 }
