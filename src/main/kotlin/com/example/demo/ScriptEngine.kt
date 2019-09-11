@@ -10,6 +10,12 @@ import org.springframework.stereotype.Service
 class ScriptEngine(
         @Autowired val beanFactory: ListableBeanFactory) {
 
+    private val beans by lazy {
+        beanFactory
+                .beanDefinitionNames
+                .map { it to beanFactory.getBean(it) }
+    }
+
     fun execute(condition: Condition): Boolean {
         return execute(condition.script,
                 condition.conditionVars?.map { it.name to it.value }?.toMap())
@@ -22,7 +28,6 @@ class ScriptEngine(
     fun execute(script: String, vars: Map<String, String>?): Boolean {
 
         val binding = bind()
-
         vars?.forEach {
             binding.setVariable(it.key, it.value)
         }
@@ -32,13 +37,9 @@ class ScriptEngine(
         return result as Boolean
     }
 
-    // TODO cache this binding to reuse across invocations
     private fun bind(): Binding {
         val binding = Binding()
-        beanFactory
-                .beanDefinitionNames
-                .map { it to beanFactory.getBean(it) }
-                .forEach { binding.setVariable(it.first, it.second) }
+        beans.forEach { binding.setVariable(it.first, it.second) }
         return binding
     }
 }
