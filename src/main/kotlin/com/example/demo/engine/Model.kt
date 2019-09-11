@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.demo.engine
 
 import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.annotation.CreatedDate

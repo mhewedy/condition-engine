@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.demo.engine
 
 import groovy.lang.Binding
 import groovy.lang.GroovyShell
@@ -11,9 +11,7 @@ class ScriptEngine(
         @Autowired val beanFactory: ListableBeanFactory) {
 
     private val beans by lazy {
-        beanFactory
-                .beanDefinitionNames
-                .map { it to beanFactory.getBean(it) }
+        beanFactory.beanDefinitionNames.map { it to beanFactory.getBean(it) }
     }
 
     fun execute(condition: Condition): Boolean {

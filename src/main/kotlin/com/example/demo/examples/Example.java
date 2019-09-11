@@ -1,5 +1,9 @@
-package com.example.demo;
+package com.example.demo.examples;
 
+import com.example.demo.engine.Condition;
+import com.example.demo.engine.ConditionRepository;
+import com.example.demo.engine.ConditionService;
+import com.example.demo.engine.ScriptEngine;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -24,15 +28,16 @@ public class Example {
         Map<String, String> vars = new HashMap<>();
         vars.put("year", "2019");
         conditionService.addNew("First Condition", "" +
-                "abcService.doAbc()       // example on calling spring service \n" +
-                "return (year == \"2019\")  // example on passing variables" +
-                "", vars);
+                        "testService.doCallTheService()            // example on calling spring service \n" +
+                        "return (year == \"2019\")                 // example on using defined variables\n"
+                , vars, "my first condition");
 
         System.out.println("** Executing conditions **** ");
 
         for (Condition condition : conditionService.listAll()) {
+            System.out.println("executing: " + condition.getName() + ",with script:  " + condition.getScript());
             boolean result = scriptEngine.execute(condition);
-            System.out.println("executing: " + condition.getName() + ", result= " + result);
+            System.out.println("result: " + result);
         }
 
     }

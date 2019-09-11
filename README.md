@@ -1,6 +1,6 @@
 # condition-engine
 
-Engine uses groovy language to exeucte the conditions.
+Engine uses groovy language to execute the conditions.
 
 * The groovy script will have all spring beans already injected.
 * user can pass as many variables as he wants.
@@ -33,4 +33,4 @@ boolean result = scriptEngine.execute(condition);
 System.out.println("executing: " + condition.getName() + ", result= " + result);
 ```
 
-For complete Example in java see [Example.java](https://github.com/mhewedy/condition-engine/blob/master/src/main/kotlin/com/example/demo/Example.java)
+For complete Example in java see [Example.java](https://github.com/mhewedy/condition-engine/blob/master/src/main/kotlin/com/example/demo/examples/Example.java)
