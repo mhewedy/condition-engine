@@ -14,14 +14,8 @@ class ScriptEngine(
         beanFactory.beanDefinitionNames.map { it to beanFactory.getBean(it) }
     }
 
-    fun execute(condition: Condition): Boolean {
-        return execute(condition.script,
-                condition.conditionVars?.map { it.name to it.value }?.toMap())
-    }
-
-    fun execute(script: String): Boolean {
-        return execute(script, null)
-    }
+    fun execute(condition: Condition) = execute(condition.script,
+            condition.conditionVars?.map { it.name to it.value }?.toMap())
 
     fun execute(script: String, vars: Map<String, String>?): Boolean {
 
